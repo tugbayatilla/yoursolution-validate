@@ -3,8 +3,8 @@ namespace yoursolution_validate;
 public class UnitTest1
 {
     [Fact]
-    public void Test1()
+    public void A_String_Between_Parenthesis()
     {
-
+        Assert.True(YourSolution.Validate("(This looks great!)", "()"));
     }
 }
