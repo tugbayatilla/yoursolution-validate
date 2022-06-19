@@ -19,4 +19,10 @@ public class UnitTest1
     {
         Assert.True(YourSolution.Validate("(This [looks] great!)", "()[]"));
     }
+
+    [Fact]
+    public void Invalid_square_brackets_and_paranthesis()
+    {
+        Assert.False(YourSolution.Validate("(This [looks) bad!]", "()[]"));
+    }
 }
