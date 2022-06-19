@@ -45,8 +45,7 @@ namespace yoursolution_validate
                 if (usedClosedSignPair != null)
                 {
                     var findUsedSignPair = UsedSignPairs.First(p => p.SignPair.CloseChar == nextChar);
-                    UsedSignPairs.Remove(findUsedSignPair);
-                    UsedSignPairs.Add(new Appereance(findUsedSignPair.SignPair, findUsedSignPair.OpenSignIndex, i));
+                    findUsedSignPair.CloseSignIndex = i;
                 }
             }
 
