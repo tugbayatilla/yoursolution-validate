@@ -6,7 +6,18 @@ namespace yoursolution_validate
         {
             char openChar = v2[0];
             char closeChar = v2[1];
-            return v1.Contains(openChar) && v1.Contains(closeChar);
+
+            int indexOfOpenChar = v1.IndexOf(openChar);
+            int indexOfCloseChar = v1.IndexOf(closeChar);
+
+            if (indexOfOpenChar != -1 && indexOfCloseChar != -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
