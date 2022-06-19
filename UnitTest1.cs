@@ -7,4 +7,10 @@ public class UnitTest1
     {
         Assert.True(YourSolution.Validate("(This looks great!)", "()"));
     }
+
+    [Fact]
+    public void Closing_paranthesis_is_missing()
+    {
+        Assert.False(YourSolution.Validate("(This looks bad!", "()"));
+    }
 }
