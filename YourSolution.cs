@@ -4,7 +4,9 @@ namespace yoursolution_validate
     {
         internal static bool Validate(string v1, string v2)
         {
-            return v1.Contains(v2[0]) && v1.Contains(v2[1]);
+            char openChar = v2[0];
+            char closeChar = v2[1];
+            return v1.Contains(openChar) && v1.Contains(closeChar);
         }
     }
 }
