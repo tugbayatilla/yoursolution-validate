@@ -10,7 +10,8 @@ public class UnitTest1
     public UnitTest1(ITestOutputHelper output)
     {
         this.output = output;
-        YourSolution._logger = (s)=> {
+        YourSolution._logger = (s) =>
+        {
             output.WriteLine(s);
         };
     }
@@ -34,9 +35,20 @@ public class UnitTest1
         Assert.True(YourSolution.Validate("(This [looks] great!)", "()[]"));
     }
 
-    [Fact(Skip="Refactoring code to make this test available!")]
+    [Fact(Skip = "Refactoring code to make this test available!")]
     public void Invalid_square_brackets_and_paranthesis()
     {
         Assert.False(YourSolution.Validate("(This [looks) bad!]", "()[]"));
+    }
+
+    [Fact]
+    public void Open_paranthesis_index_is_zero_and_close_paranthesis_index_is_eighteen()
+    {
+        YourSolution.Validate("(This looks great!)", "()");
+        var paranthesisSignPair = YourSolution.UsedSignPairs.First(p=>p.Item1.OpenChar == '(' && p.Item1.CloseChar == ')');
+
+        Assert.Equal(0, paranthesisSignPair.Item2);
+        Assert.Equal(18, paranthesisSignPair.Item3);
+
     }
 }

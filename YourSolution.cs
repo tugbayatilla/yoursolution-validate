@@ -3,6 +3,9 @@ namespace yoursolution_validate
     internal class YourSolution
     {
         internal static Action<string>? _logger;
+        
+        // TODO: intermediate property. in the future, it can be removed. observe!
+        internal static List<Tuple<SignPair, int?, int?>> UsedSignPairs = new List<Tuple<SignPair, int?, int?>>();
 
         internal static bool Validate(string v1, string v2)
         {
