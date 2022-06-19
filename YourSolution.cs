@@ -5,10 +5,13 @@ namespace yoursolution_validate
         internal static bool Validate(string v1, string v2)
         {
             var signs = new List<Tuple<char, char>>();
-            var sign = new Tuple<char, char>(v2[0], v2[1]);
-
-            signs.Add(sign);
-
+            for (int i = 0; i < v2.Length; i+=2)
+            {
+                var sign = new Tuple<char, char>(v2[i], v2[i+1]);
+                
+                signs.Add(sign);
+            }
+            
             foreach (var s in signs)
             {
                 int indexOfOpenChar = v1.IndexOf(s.Item1);
