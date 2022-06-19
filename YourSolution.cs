@@ -6,18 +6,18 @@ namespace yoursolution_validate
 
         internal static bool Validate(string v1, string v2)
         {
-            var signs = new List<Sign>();
+            var givenSignPairs = new List<SignPair>();
             for (int i = 0; i < v2.Length; i += 2)
             {
-                var sign = new Sign(v2[i], v2[i + 1]);
+                var sign = new SignPair(v2[i], v2[i + 1]);
                 _logger?.Invoke($"{sign.OpenChar}{sign.CloseChar}");
-                signs.Add(sign);
+                givenSignPairs.Add(sign);
             }
 
-            foreach (var s in signs)
+            foreach (var signPair in givenSignPairs)
             {
-                int indexOfOpenChar = v1.IndexOf(s.OpenChar);
-                int indexOfCloseChar = v1.IndexOf(s.CloseChar);
+                int indexOfOpenChar = v1.IndexOf(signPair.OpenChar);
+                int indexOfCloseChar = v1.IndexOf(signPair.CloseChar);
 
                 if (indexOfOpenChar != -1 && indexOfCloseChar != -1)
                 {
@@ -33,9 +33,9 @@ namespace yoursolution_validate
 
         }
 
-        class Sign
+        internal class SignPair
         {
-            public Sign(char openChar, char closeChar)
+            public SignPair(char openChar, char closeChar)
             {
                 this.OpenChar = openChar;
                 this.CloseChar = closeChar;
