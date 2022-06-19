@@ -4,11 +4,10 @@ namespace yoursolution_validate
     {
         internal static bool Validate(string v1, string v2)
         {
-            char openChar = v2[0];
-            char closeChar = v2[1];
+            var sign = new Tuple<char,char>(v2[0],v2[1]);
 
-            int indexOfOpenChar = v1.IndexOf(openChar);
-            int indexOfCloseChar = v1.IndexOf(closeChar);
+            int indexOfOpenChar = v1.IndexOf(sign.Item1);
+            int indexOfCloseChar = v1.IndexOf(sign.Item2);
 
             if (indexOfOpenChar != -1 && indexOfCloseChar != -1)
             {
