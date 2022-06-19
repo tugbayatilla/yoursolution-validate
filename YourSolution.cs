@@ -65,6 +65,9 @@ namespace yoursolution_validate
             public SignPair SignPair { get; set; }
             public int? OpenSignIndex { get; set; }
             public int? CloseSignIndex { get; set; }
+
+            public SignPair? ChildSignPair { get; set; }
+
         }
 
         internal class SignPair

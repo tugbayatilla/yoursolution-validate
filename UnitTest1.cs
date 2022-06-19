@@ -51,4 +51,15 @@ public class UnitTest1
         Assert.Equal(18, paranthesisSignPair.CloseSignIndex);
 
     }
+
+    [Fact]
+    public void Square_brackets_sign_is_child_of_paranthesis()
+    {
+        YourSolution.Validate("(This [looks] great!)", "()[]");
+        var paranthesisSignPair = YourSolution.UsedSignPairs.First(p=>p.SignPair.OpenChar == '(' && p.SignPair.CloseChar == ')');
+
+        Assert.NotNull(paranthesisSignPair.ChildSignPair);
+        Assert.Equal('[', paranthesisSignPair.ChildSignPair.OpenChar);
+        Assert.Equal(']', paranthesisSignPair.ChildSignPair.CloseChar);
+    }
 }
