@@ -45,10 +45,10 @@ public class UnitTest1
     public void Open_paranthesis_index_is_zero_and_close_paranthesis_index_is_eighteen()
     {
         YourSolution.Validate("(This looks great!)", "()");
-        var paranthesisSignPair = YourSolution.UsedSignPairs.First(p=>p.Item1.OpenChar == '(' && p.Item1.CloseChar == ')');
+        var paranthesisSignPair = YourSolution.UsedSignPairs.First(p=>p.SignPair.OpenChar == '(' && p.SignPair.CloseChar == ')');
 
-        Assert.Equal(0, paranthesisSignPair.Item2);
-        Assert.Equal(18, paranthesisSignPair.Item3);
+        Assert.Equal(0, paranthesisSignPair.OpenSignIndex);
+        Assert.Equal(18, paranthesisSignPair.CloseSignIndex);
 
     }
 }

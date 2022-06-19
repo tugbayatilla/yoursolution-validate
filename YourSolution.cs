@@ -5,7 +5,7 @@ namespace yoursolution_validate
         internal static Action<string>? _logger;
 
         // TODO: intermediate property. in the future, it can be removed. observe!
-        internal static List<Tuple<SignPair, int?, int?>> UsedSignPairs = new List<Tuple<SignPair, int?, int?>>();
+        internal static List<Appereance> UsedSignPairs = new List<Appereance>();
 
         internal static bool Validate(string v1, string v2)
         {
@@ -38,20 +38,34 @@ namespace yoursolution_validate
                 var usedOpenSignPair = givenSignPairs.FirstOrDefault(p => p.OpenChar == nextChar);
                 if (usedOpenSignPair != null)
                 {
-                    UsedSignPairs.Add(new Tuple<SignPair, int?, int?>(usedOpenSignPair, i, null));
+                    UsedSignPairs.Add(new Appereance(usedOpenSignPair, i, null));
                 }
 
                 var usedClosedSignPair = givenSignPairs.FirstOrDefault(p => p.CloseChar == nextChar);
                 if (usedClosedSignPair != null)
                 {
-                    var findUsedSignPair = UsedSignPairs.First(p => p.Item1.CloseChar == nextChar);
+                    var findUsedSignPair = UsedSignPairs.First(p => p.SignPair.CloseChar == nextChar);
                     UsedSignPairs.Remove(findUsedSignPair);
-                    UsedSignPairs.Add(new Tuple<SignPair, int?, int?>(findUsedSignPair.Item1, findUsedSignPair.Item2, i));
+                    UsedSignPairs.Add(new Appereance(findUsedSignPair.SignPair, findUsedSignPair.OpenSignIndex, i));
                 }
             }
 
             return true;
 
+        }
+
+        internal class Appereance
+        {
+            public Appereance(SignPair signPair, int? openSignIndex, int? closeSignIndex)
+            {
+                SignPair = signPair;
+                OpenSignIndex = openSignIndex;
+                CloseSignIndex = closeSignIndex;
+            }
+
+            public SignPair SignPair { get; set; }
+            public int? OpenSignIndex { get; set; }
+            public int? CloseSignIndex { get; set; }
         }
 
         internal class SignPair
