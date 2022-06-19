@@ -4,19 +4,28 @@ namespace yoursolution_validate
     {
         internal static bool Validate(string v1, string v2)
         {
-            var sign = new Tuple<char,char>(v2[0],v2[1]);
+            var signs = new List<Tuple<char, char>>();
+            var sign = new Tuple<char, char>(v2[0], v2[1]);
 
-            int indexOfOpenChar = v1.IndexOf(sign.Item1);
-            int indexOfCloseChar = v1.IndexOf(sign.Item2);
+            signs.Add(sign);
 
-            if (indexOfOpenChar != -1 && indexOfCloseChar != -1)
+            foreach (var s in signs)
             {
-                return true;
+                int indexOfOpenChar = v1.IndexOf(s.Item1);
+                int indexOfCloseChar = v1.IndexOf(s.Item2);
+
+                if (indexOfOpenChar != -1 && indexOfCloseChar != -1)
+                {
+                    continue;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
-            {
-                return false;
-            }
+
+            return true;
+
         }
     }
 }
