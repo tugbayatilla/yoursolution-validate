@@ -66,7 +66,7 @@ namespace yoursolution_validate
             public int? OpenSignIndex { get; set; }
             public int? CloseSignIndex { get; set; }
 
-            public SignPair? ChildSignPair { get; set; }
+            public Appereance? ChildAppereance { get; set; }
 
         }
 

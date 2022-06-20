@@ -58,8 +58,8 @@ public class UnitTest1
         YourSolution.Validate("(This [looks] great!)", "()[]");
         var paranthesisSignPair = YourSolution.UsedSignPairs.First(p=>p.SignPair.OpenChar == '(' && p.SignPair.CloseChar == ')');
 
-        Assert.NotNull(paranthesisSignPair.ChildSignPair);
-        Assert.Equal('[', paranthesisSignPair.ChildSignPair.OpenChar);
-        Assert.Equal(']', paranthesisSignPair.ChildSignPair.CloseChar);
+        Assert.NotNull(paranthesisSignPair.ChildAppereance);
+        Assert.Equal('[', paranthesisSignPair.ChildAppereance.SignPair.OpenChar);
+        Assert.Equal(']', paranthesisSignPair.ChildAppereance.SignPair.CloseChar);
     }
 }
