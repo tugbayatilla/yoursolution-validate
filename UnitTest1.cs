@@ -42,17 +42,6 @@ public class UnitTest1
     }
 
     [Fact]
-    public void Open_paranthesis_index_is_zero_and_close_paranthesis_index_is_eighteen()
-    {
-        YourSolution.Validate("(This looks great!)", "()");
-        var paranthesisSignPair = YourSolution.Appereances.First(p => p.SignPair.OpenChar == '(' && p.SignPair.CloseChar == ')');
-
-        Assert.Equal(0, paranthesisSignPair.OpenSignIndex);
-        Assert.Equal(18, paranthesisSignPair.CloseSignIndex);
-
-    }
-
-    [Fact]
     public void Square_brackets_sign_is_child_of_paranthesis()
     {
         YourSolution.Validate("(This [looks] great!)", "()[]");
