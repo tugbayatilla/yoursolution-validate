@@ -38,19 +38,12 @@ namespace yoursolution_validate
                     {
                         FirstAppereance = newAppereance;
                     }
-                    
-                    var lastAppereance = FirstAppereance.GetLastAppereance();
-                    lastAppereance.ChildAppereance = newAppereance;
-
-                    Appereance? parent = FindLastAppereance();
-                    if (parent != null)
-                    {
-                        parent.ChildAppereance = newAppereance;
-                    }
                     else
                     {
-                        Appereances.Add(newAppereance);
+                    var lastAppereance = FirstAppereance.GetLastAppereance();
+                    lastAppereance.ChildAppereance = newAppereance;
                     }
+                        Appereances.Add(newAppereance);
                 }
 
                 // TODO: recursively find the appereance
@@ -68,11 +61,6 @@ namespace yoursolution_validate
 
             return true;
 
-        }
-
-        internal static Appereance? FindLastAppereance()
-        {
-            return Appereances.LastOrDefault(p => p.OpenSignIndex.HasValue);
         }
 
         private static List<SignPair> ParseSignPairs(string v2)

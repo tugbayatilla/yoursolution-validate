@@ -70,17 +70,13 @@ public class UnitTest1
     }
 
     [Fact]
-    public void Last_appereance_in_composite()
+    public void Last_appereance_sign_is_bracket()
     {
-        var first = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 0, 18);
-        var second = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 1, 17);
-        var third = new YourSolution.Appereance(new YourSolution.SignPair('[', ']'), 2, 16);
+        YourSolution.FirstAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 0, 18);
+        YourSolution.FirstAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 1, 17);
+        YourSolution.FirstAppereance.ChildAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('[', ']'), 2, 16);
         
-        YourSolution.Appereances.Add(first);
-        YourSolution.Appereances.Add(second);
-        YourSolution.Appereances.Add(third);
-
-        Assert.Equal("[]", YourSolution.FindLastAppereance().SignPair.ToString());
+        Assert.Equal("[]", YourSolution.FirstAppereance.GetLastAppereance().SignPair.ToString());
     }
 
     [Fact]
