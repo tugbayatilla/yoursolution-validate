@@ -1,6 +1,6 @@
 namespace yoursolution_validate
 {
-    internal class YourSolution
+    internal partial class YourSolution
     {
         // TODO: intermediate property. in the future, it can be removed. observe!
         internal List<Appereance> Appereances = new List<Appereance>();
@@ -72,52 +72,6 @@ namespace yoursolution_validate
             }
 
             return givenSignPairs;
-        }
-
-        internal class Appereance
-        {
-            public Appereance()
-            {
-
-            }
-            public Appereance(SignPair signPair, int? openSignIndex, int? closeSignIndex)
-            {
-                SignPair = signPair;
-                OpenSignIndex = openSignIndex;
-                CloseSignIndex = closeSignIndex;
-            }
-
-            public SignPair SignPair { get; set; }
-            public int? OpenSignIndex { get; set; }
-            public int? CloseSignIndex { get; set; }
-
-            public Appereance? ChildAppereance { get; set; }
-
-            public Appereance GetLastAppereance()
-            {
-                if (ChildAppereance != null)
-                {
-                    return ChildAppereance.GetLastAppereance();
-                }
-                return this;
-            }
-
-        }
-
-        internal class SignPair
-        {
-            public SignPair(char openChar, char closeChar)
-            {
-                this.OpenChar = openChar;
-                this.CloseChar = closeChar;
-            }
-            public char OpenChar { get; set; }
-            public char CloseChar { get; set; }
-
-            public override string ToString()
-            {
-                return string.Concat(OpenChar, CloseChar);
-            }
         }
     }
 }
