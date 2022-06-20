@@ -71,6 +71,14 @@ public class UnitTest1
         Assert.Equal("()", YourSolution.FirstAppereance.SignPair.ToString());
     }
 
+    [Fact]
+    public void Open_paranthesis_index_is_zero_and_close_paranthesis_index_is_eighteen_using_FirstAppereance()
+    {
+        YourSolution.Validate("(This looks great!)", "()");
+
+        Assert.Equal(0, YourSolution.FirstAppereance.OpenSignIndex);
+        Assert.Equal(18, YourSolution.FirstAppereance.CloseSignIndex);
+    }
 
 
 }
