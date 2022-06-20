@@ -83,4 +83,20 @@ public class UnitTest1
         Assert.Equal(_yourSolution.FirstAppereance, appereance);
     }
 
+    [Fact]
+    public void get_each_appereance_backwards_as_flat()
+    {
+        _yourSolution.FirstAppereance = new Appereance(new SignPair('(', ')'), 0, 18);
+        _yourSolution.FirstAppereance.ChildAppereance = new Appereance(new SignPair('{', '}'), 1, 17);
+        _yourSolution.FirstAppereance.ChildAppereance.ChildAppereance = new Appereance(new SignPair('[', ']'), 2, 16);
+
+        foreach (var item in _yourSolution.FirstAppereance.GetEach())
+        {
+            Assert.IsType<Appereance>(item);
+        }
+        Assert.Equal("[]", _yourSolution.FirstAppereance.GetEach().ToArray()[0].SignPair.ToString());
+        Assert.Equal("{}", _yourSolution.FirstAppereance.GetEach().ToArray()[1].SignPair.ToString());
+        Assert.Equal("()", _yourSolution.FirstAppereance.GetEach().ToArray()[2].SignPair.ToString());
+    }
+
 }
