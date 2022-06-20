@@ -79,5 +79,15 @@ public class UnitTest1
         Assert.Equal("[]", YourSolution.FindLastAppereance().SignPair.ToString());
     }
 
+    [Fact]
+    public void Last_appereance_sign_is_bracket()
+    {
+        YourSolution.FirstAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 0, 18);
+        YourSolution.FirstAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 1, 17);
+        YourSolution.FirstAppereance.ChildAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('[', ']'), 2, 16);
+        
+        Assert.Equal("[]", YourSolution.FirstAppereance.GetLastAppereance().SignPair.ToString());
+    }
+
 
 }
