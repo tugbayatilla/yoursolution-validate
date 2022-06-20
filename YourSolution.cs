@@ -38,7 +38,7 @@ namespace yoursolution_validate
                     {
                         FirstAppereance = newAppereance;
                     }
-                    var parent = Appereances.LastOrDefault(p => p.OpenSignIndex.HasValue);
+                    Appereance? parent = FindParent();
                     if (parent != null)
                     {
                         parent.ChildAppereance = newAppereance;
@@ -64,6 +64,11 @@ namespace yoursolution_validate
 
             return true;
 
+        }
+
+        private static Appereance? FindParent()
+        {
+            return Appereances.LastOrDefault(p => p.OpenSignIndex.HasValue);
         }
 
         private static List<SignPair> ParseSignPairs(string v2)
