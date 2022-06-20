@@ -3,10 +3,10 @@ namespace yoursolution_validate
     internal class YourSolution
     {
         // TODO: intermediate property. in the future, it can be removed. observe!
-        internal static List<Appereance> Appereances = new List<Appereance>();
-        internal static Appereance FirstAppereance;
+        internal List<Appereance> Appereances = new List<Appereance>();
+        internal Appereance FirstAppereance;
 
-        internal static bool Validate(string v1, string v2)
+        internal bool Validate(string v1, string v2)
         {
             var givenSignPairs = ParseSignPairs(v2);
 
@@ -62,7 +62,7 @@ namespace yoursolution_validate
 
         }
 
-        private static List<SignPair> ParseSignPairs(string v2)
+        private List<SignPair> ParseSignPairs(string v2)
         {
             var givenSignPairs = new List<SignPair>();
             for (int i = 0; i < v2.Length; i += 2)
