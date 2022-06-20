@@ -38,6 +38,10 @@ namespace yoursolution_validate
                     {
                         FirstAppereance = newAppereance;
                     }
+                    
+                    var lastAppereance = FirstAppereance.GetLastAppereance();
+                    lastAppereance.ChildAppereance = newAppereance;
+
                     Appereance? parent = FindLastAppereance();
                     if (parent != null)
                     {
@@ -102,6 +106,15 @@ namespace yoursolution_validate
             public int? CloseSignIndex { get; set; }
 
             public Appereance? ChildAppereance { get; set; }
+
+            public Appereance GetLastAppereance()
+            {
+                if(ChildAppereance != null)
+                {
+                    return ChildAppereance.GetLastAppereance();
+                }
+                return this;
+            }
 
         }
 
