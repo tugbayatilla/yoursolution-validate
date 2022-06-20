@@ -38,13 +38,27 @@ namespace yoursolution_validate
                 var givenOpenCharSignPair = givenSignPairs.FirstOrDefault(p => p.OpenChar == nextChar);
                 if (givenOpenCharSignPair != null)
                 {
-                    Appereances.Add(new Appereance(givenOpenCharSignPair, i, null));
+                    var newAppereance = new Appereance(givenOpenCharSignPair, i, null);
+                    var parent = Appereances.LastOrDefault(p => p.OpenSignIndex.HasValue);
+                    if (parent != null)
+                    {
+                        parent.ChildAppereance = newAppereance;
+                    }
+                    else
+                    {
+                        Appereances.Add(newAppereance);
+                    }
                 }
 
+                // TODO: recursively find the appereance
                 var givenCloseCharSignPair = givenSignPairs.FirstOrDefault(p => p.CloseChar == nextChar);
                 if (givenCloseCharSignPair != null)
                 {
-                    var closeCharAppereance = Appereances.First(p => p.SignPair.CloseChar == nextChar);
+                    var closeCharAppereance = Appereances.FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
+                    if(closeCharAppereance == null)
+                    {
+                        closeCharAppereance = Appereances.Select(p=>p.ChildAppereance).FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
+                    }
                     closeCharAppereance.CloseSignIndex = i;
                 }
             }
