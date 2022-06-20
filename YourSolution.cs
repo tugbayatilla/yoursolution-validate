@@ -2,8 +2,6 @@ namespace yoursolution_validate
 {
     internal class YourSolution
     {
-        internal static Action<string>? _logger;
-
         // TODO: intermediate property. in the future, it can be removed. observe!
         internal static List<Appereance> Appereances = new List<Appereance>();
         internal static Appereance FirstAppereance;
@@ -31,6 +29,7 @@ namespace yoursolution_validate
             {
                 char nextChar = v1[i];
                 var givenOpenCharSignPair = givenSignPairs.FirstOrDefault(p => p.OpenChar == nextChar);
+
                 if (givenOpenCharSignPair != null)
                 {
                     var newAppereance = new Appereance(givenOpenCharSignPair, i, null);
@@ -40,10 +39,10 @@ namespace yoursolution_validate
                     }
                     else
                     {
-                    var lastAppereance = FirstAppereance.GetLastAppereance();
-                    lastAppereance.ChildAppereance = newAppereance;
+                        var lastAppereance = FirstAppereance.GetLastAppereance();
+                        lastAppereance.ChildAppereance = newAppereance;
                     }
-                        Appereances.Add(newAppereance);
+                    Appereances.Add(newAppereance);
                 }
 
                 // TODO: recursively find the appereance
@@ -69,7 +68,6 @@ namespace yoursolution_validate
             for (int i = 0; i < v2.Length; i += 2)
             {
                 var sign = new SignPair(v2[i], v2[i + 1]);
-                _logger?.Invoke($"{sign.OpenChar}{sign.CloseChar}");
                 givenSignPairs.Add(sign);
             }
 
@@ -97,7 +95,7 @@ namespace yoursolution_validate
 
             public Appereance GetLastAppereance()
             {
-                if(ChildAppereance != null)
+                if (ChildAppereance != null)
                 {
                     return ChildAppereance.GetLastAppereance();
                 }

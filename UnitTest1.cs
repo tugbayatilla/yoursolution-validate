@@ -5,21 +5,9 @@ namespace yoursolution_validate;
 
 public class UnitTest1
 {
-    private readonly ITestOutputHelper output;
-
-    public UnitTest1(ITestOutputHelper output)
-    {
-        this.output = output;
-        YourSolution._logger = (s) =>
-        {
-            output.WriteLine(s);
-        };
-    }
-
     [Fact]
     public void A_String_Between_Parenthesis()
     {
-        output.WriteLine("teset 1");
         Assert.True(YourSolution.Validate("(This looks great!)", "()"));
     }
 
