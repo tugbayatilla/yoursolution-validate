@@ -38,7 +38,7 @@ namespace yoursolution_validate
                     {
                         FirstAppereance = newAppereance;
                     }
-                    Appereance? parent = FindParent();
+                    Appereance? parent = FindLastAppereance();
                     if (parent != null)
                     {
                         parent.ChildAppereance = newAppereance;
@@ -66,7 +66,7 @@ namespace yoursolution_validate
 
         }
 
-        internal static Appereance? FindParent()
+        internal static Appereance? FindLastAppereance()
         {
             return Appereances.LastOrDefault(p => p.OpenSignIndex.HasValue);
         }

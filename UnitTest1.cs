@@ -76,7 +76,7 @@ public class UnitTest1
         YourSolution.FirstAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 1, 17);
         YourSolution.FirstAppereance.ChildAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('[', ']'), 2, 16);
         
-        Assert.Equal("[]", YourSolution.FindParent().SignPair.ToString());
+        Assert.Equal("[]", YourSolution.FindLastAppereance().SignPair.ToString());
     }
 
 
