@@ -1,6 +1,6 @@
 namespace yoursolution_validate
 {
-    internal partial class YourSolution
+    internal class YourSolution
     {
         // TODO: intermediate property. in the future, it can be removed. observe!
         internal List<Appereance> Appereances = new List<Appereance>();
