@@ -66,7 +66,7 @@ namespace yoursolution_validate
 
         }
 
-        private static Appereance? FindParent()
+        internal static Appereance? FindParent()
         {
             return Appereances.LastOrDefault(p => p.OpenSignIndex.HasValue);
         }

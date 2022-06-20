@@ -69,5 +69,15 @@ public class UnitTest1
         Assert.Equal(18, YourSolution.FirstAppereance.CloseSignIndex);
     }
 
+    [Fact]
+    public void Last_appereance_in_composite()
+    {
+        YourSolution.FirstAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 0, 18);
+        YourSolution.FirstAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 1, 17);
+        YourSolution.FirstAppereance.ChildAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('[', ']'), 2, 16);
+        
+        Assert.Equal("[]", YourSolution.FindParent().SignPair.ToString());
+    }
+
 
 }
