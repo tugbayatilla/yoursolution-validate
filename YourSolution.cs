@@ -9,13 +9,7 @@ namespace yoursolution_validate
 
         internal static bool Validate(string v1, string v2)
         {
-            var givenSignPairs = new List<SignPair>();
-            for (int i = 0; i < v2.Length; i += 2)
-            {
-                var sign = new SignPair(v2[i], v2[i + 1]);
-                _logger?.Invoke($"{sign.OpenChar}{sign.CloseChar}");
-                givenSignPairs.Add(sign);
-            }
+            var givenSignPairs = ParseSignPairs(v2);
 
             foreach (var signPair in givenSignPairs)
             {
@@ -55,9 +49,9 @@ namespace yoursolution_validate
                 if (givenCloseCharSignPair != null)
                 {
                     var closeCharAppereance = Appereances.FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
-                    if(closeCharAppereance == null)
+                    if (closeCharAppereance == null)
                     {
-                        closeCharAppereance = Appereances.Select(p=>p.ChildAppereance).FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
+                        closeCharAppereance = Appereances.Select(p => p.ChildAppereance).FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
                     }
                     closeCharAppereance.CloseSignIndex = i;
                 }
@@ -65,6 +59,19 @@ namespace yoursolution_validate
 
             return true;
 
+        }
+
+        private static List<SignPair> ParseSignPairs(string v2)
+        {
+            var givenSignPairs = new List<SignPair>();
+            for (int i = 0; i < v2.Length; i += 2)
+            {
+                var sign = new SignPair(v2[i], v2[i + 1]);
+                _logger?.Invoke($"{sign.OpenChar}{sign.CloseChar}");
+                givenSignPairs.Add(sign);
+            }
+
+            return givenSignPairs;
         }
 
         internal class Appereance
