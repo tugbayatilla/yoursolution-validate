@@ -6,6 +6,7 @@ namespace yoursolution_validate
 
         // TODO: intermediate property. in the future, it can be removed. observe!
         internal static List<Appereance> Appereances = new List<Appereance>();
+        internal static Appereance FirstAppereance = new Appereance();
 
         internal static bool Validate(string v1, string v2)
         {
@@ -76,6 +77,10 @@ namespace yoursolution_validate
 
         internal class Appereance
         {
+            public Appereance()
+            {
+
+            }
             public Appereance(SignPair signPair, int? openSignIndex, int? closeSignIndex)
             {
                 SignPair = signPair;
