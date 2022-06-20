@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace yoursolution_validate
 {
     internal class Appereance
@@ -28,5 +30,16 @@ namespace yoursolution_validate
             return this;
         }
 
+        public IEnumerable<Appereance> GetEach()
+        {
+            if (ChildAppereance != null)
+            {
+                foreach (var item in ChildAppereance.GetEach())
+                {
+                    yield return item;
+                }
+            }
+            yield return this;
+        }
     }
 }
