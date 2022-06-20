@@ -30,7 +30,7 @@ public class UnitTest1
         Assert.True(_yourSolution.Validate("(This [looks] great!)", "()[]"));
     }
 
-    [Fact(Skip = "Refactoring code to make this test available!")]
+    [Fact]
     public void Invalid_square_brackets_and_paranthesis()
     {
         Assert.False(_yourSolution.Validate("(This [looks) bad!]", "()[]"));
