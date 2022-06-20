@@ -6,7 +6,7 @@ namespace yoursolution_validate
 
         // TODO: intermediate property. in the future, it can be removed. observe!
         internal static List<Appereance> Appereances = new List<Appereance>();
-        internal static Appereance FirstAppereance = new Appereance();
+        internal static Appereance FirstAppereance;
 
         internal static bool Validate(string v1, string v2)
         {
@@ -34,6 +34,10 @@ namespace yoursolution_validate
                 if (givenOpenCharSignPair != null)
                 {
                     var newAppereance = new Appereance(givenOpenCharSignPair, i, null);
+                    if (FirstAppereance == null)
+                    {
+                        FirstAppereance = newAppereance;
+                    }
                     var parent = Appereances.LastOrDefault(p => p.OpenSignIndex.HasValue);
                     if (parent != null)
                     {
@@ -105,6 +109,11 @@ namespace yoursolution_validate
             }
             public char OpenChar { get; set; }
             public char CloseChar { get; set; }
+
+            public override string ToString()
+            {
+                return string.Concat(OpenChar, CloseChar);
+            }
         }
     }
 }
