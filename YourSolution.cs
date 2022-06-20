@@ -5,7 +5,7 @@ namespace yoursolution_validate
         internal static Action<string>? _logger;
 
         // TODO: intermediate property. in the future, it can be removed. observe!
-        internal static List<Appereance> UsedSignPairs = new List<Appereance>();
+        internal static List<Appereance> Appereances = new List<Appereance>();
 
         internal static bool Validate(string v1, string v2)
         {
@@ -35,17 +35,17 @@ namespace yoursolution_validate
             for (int i = 0; i < v1.Length; i++)
             {
                 char nextChar = v1[i];
-                var usedOpenSignPair = givenSignPairs.FirstOrDefault(p => p.OpenChar == nextChar);
-                if (usedOpenSignPair != null)
+                var givenOpenCharSignPair = givenSignPairs.FirstOrDefault(p => p.OpenChar == nextChar);
+                if (givenOpenCharSignPair != null)
                 {
-                    UsedSignPairs.Add(new Appereance(usedOpenSignPair, i, null));
+                    Appereances.Add(new Appereance(givenOpenCharSignPair, i, null));
                 }
 
-                var usedClosedSignPair = givenSignPairs.FirstOrDefault(p => p.CloseChar == nextChar);
-                if (usedClosedSignPair != null)
+                var givenCloseCharSignPair = givenSignPairs.FirstOrDefault(p => p.CloseChar == nextChar);
+                if (givenCloseCharSignPair != null)
                 {
-                    var findUsedSignPair = UsedSignPairs.First(p => p.SignPair.CloseChar == nextChar);
-                    findUsedSignPair.CloseSignIndex = i;
+                    var closeCharAppereance = Appereances.First(p => p.SignPair.CloseChar == nextChar);
+                    closeCharAppereance.CloseSignIndex = i;
                 }
             }
 
