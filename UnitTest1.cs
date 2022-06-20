@@ -45,11 +45,10 @@ public class UnitTest1
     public void Square_brackets_sign_is_child_of_paranthesis()
     {
         YourSolution.Validate("(This [looks] great!)", "()[]");
-        var paranthesisSignPair = YourSolution.Appereances.First(p => p.SignPair.OpenChar == '(' && p.SignPair.CloseChar == ')');
 
-        Assert.NotNull(paranthesisSignPair.ChildAppereance);
-        Assert.Equal('[', paranthesisSignPair.ChildAppereance.SignPair.OpenChar);
-        Assert.Equal(']', paranthesisSignPair.ChildAppereance.SignPair.CloseChar);
+        Assert.NotNull(YourSolution.FirstAppereance.ChildAppereance);
+        Assert.Equal('[', YourSolution.FirstAppereance.ChildAppereance.SignPair.OpenChar);
+        Assert.Equal(']', YourSolution.FirstAppereance.ChildAppereance.SignPair.CloseChar);
     }
 
     [Fact]
@@ -75,19 +74,18 @@ public class UnitTest1
         YourSolution.FirstAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 0, 18);
         YourSolution.FirstAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 1, 17);
         YourSolution.FirstAppereance.ChildAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('[', ']'), 2, 16);
-        
+
         Assert.Equal("[]", YourSolution.FirstAppereance.GetLastAppereance().SignPair.ToString());
     }
 
     [Fact]
-    public void Last_appereance_sign_is_bracket()
+    public void Last_appereance_sign_is_the_first_appereance()
     {
         YourSolution.FirstAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 0, 18);
-        YourSolution.FirstAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('(', ')'), 1, 17);
-        YourSolution.FirstAppereance.ChildAppereance.ChildAppereance = new YourSolution.Appereance(new YourSolution.SignPair('[', ']'), 2, 16);
-        
-        Assert.Equal("[]", YourSolution.FirstAppereance.GetLastAppereance().SignPair.ToString());
-    }
 
+         var appereance = YourSolution.FirstAppereance.GetLastAppereance();
+
+        Assert.Equal(YourSolution.FirstAppereance, appereance);
+    }
 
 }
