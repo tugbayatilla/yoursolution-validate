@@ -55,6 +55,10 @@ namespace yoursolution_validate
                         closeCharAppereance = Appereances.Select(p => p.ChildAppereance).FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
                     }
                     closeCharAppereance.CloseSignIndex = i;
+
+                    if(closeCharAppereance.GetEach().Any(p=>p.OpenSignIndex < i && !p.CloseSignIndex.HasValue)){
+                        return false;
+                    }
                 }
             }
 
