@@ -49,11 +49,7 @@ namespace yoursolution_validate
                 var givenCloseCharSignPair = givenSignPairs.FirstOrDefault(p => p.CloseChar == nextChar);
                 if (givenCloseCharSignPair != null)
                 {
-                    var closeCharAppereance = Appereances.FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
-                    if (closeCharAppereance == null)
-                    {
-                        closeCharAppereance = Appereances.Select(p => p.ChildAppereance).FirstOrDefault(p => p.SignPair.CloseChar == nextChar);
-                    }
+                    var closeCharAppereance = FirstAppereance.GetEach().First(p => p.SignPair.CloseChar == nextChar);
                     closeCharAppereance.CloseSignIndex = i;
 
                     if(closeCharAppereance.GetEach().Any(p=>p.OpenSignIndex < i && !p.CloseSignIndex.HasValue)){
